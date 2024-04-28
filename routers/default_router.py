@@ -7,7 +7,7 @@ default_router = Router()
 
 @default_router.message(F.text == '/start')
 async def start(msg: Message):
-    table = soup.find('table', attrs={'id': 'table_numbers'})
+    table = soup.find('table', attrs={'class': 'table'})
     rows = table.find_all('tr')
 
     data = []
