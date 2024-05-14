@@ -2,9 +2,8 @@ import json
 
 from aiogram import Bot
 
-from bs4 import BeautifulSoup
-
-import requests
+from services.parsing_service import ParsingService
+from services.visualization_service import VisualizationService
 
 with open('appsettings.json', 'r') as f:
     config = json.load(f)
@@ -12,7 +11,5 @@ with open('appsettings.json', 'r') as f:
 bot_settings = config['BotSettings']
 bot = Bot(token=bot_settings['Token'])
 
-url = config['ParseUrl']
-response = requests.get(url)
-
-soup = BeautifulSoup(response.text, 'html.parser')
+parsing_service = ParsingService()
+visualization_service = VisualizationService()
